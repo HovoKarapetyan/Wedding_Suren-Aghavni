@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Հարսանեկան Հրավիրատոմս</title>
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/gun_image1.jpg" as="image">
+    <link rel="preload" href="images/gun_image2.jpg" as="image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjord+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background-music" loop preload="auto">
+        <source src="music/wedding_song.mp3" type="audio/mpeg">
+        <span lang="hy">Ձեր բրաուզերը չի աջակցում audio թեգին։</span>
+    </audio>
+
+    <div class="background-container">
+        <div class="background-layer" id="bg-layer-1"></div>
+        <div class="background-layer" id="bg-layer-2"></div>
+    </div>
+
+    <div class="content">
+        <section id="hero-section" class="section">
+            <div class="section-content">
+                <div class="intro-title">Հրավիրատոմս</div>
+                <span class="ampersand">&</span> 
+                <div class="names-container">
+                    <h1 class="name">Սուրեն</h1>
+                    <h1 class="name">Աղավնի</h1>
+                </div>
+            </div>
+        </section>
+
+        <section id="countdown-section" class="section">
+            <div class="section-content">
+                <div class="calendar">
+                    <div class="calendar-month">Դեկտեմբեր</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-year">Ուրբաթ, 2025</div>
+                </div>
+                <div id="countdown"></div>
+            </div>
+        </section>
+
+        <section id="story-section" class="section">
+            <div class="section-content">
+                <h2>Մեր մասին</h2>
+                <p>
+                    Սիրելի հյուրեր 
+
+                    Սիրով և մեծ ակնկալիքով հրավիրում ենք ձեզ
+                    ներկայանալու մեր կյանքի նոր ու կարևոր պահի՝
+                    մեր միության հանդիսավոր արարողությանը։
+                    Ձեր ներկայությունն այս տոնական օրը
+                    մեզ համար կլինի մեծագույն պատիվ և ուրախություն։❤️
+                </p>
+            </div>
+        </section>
+
+        <section id="timeline-section" class="section">
+            <div class="section-content">
+                <h2>Մեր օրվա ընթացքը</h2>
+                <div class="timeline-container">
+                    <div class="location-card" id="groom-house">
+                        <h3>Փեսայի տուն</h3>
+                        <span>Ժամը՝ 11:00</span>
+                        <a href="https://maps.app.goo.gl/JgVB6yxWSAR4PmeS8" target="_blank" class="map-button">Դիտել քարտեզի վրա</a>
+                    </div>
+                    <div class="location-card" id="bride-house">
+                        <h3>Հարսի տուն</h3>
+                        <span>Ժամը՝ 12:00</span>
+                        <a href="https://maps.app.goo.gl/wbK9xH8YantR7n7Z6" target="_blank" class="map-button">Դիտել քարտեզի վրա</a>
+                    </div>
+                    <div class="location-card" id="church">
+                        <h3>Եկեղեցի</h3>
+                        <span>Ժամը՝ 14:00</span>
+                        <a href="https://maps.app.goo.gl/DDBhcs7ckqm77ntR9" target="_blank" class="map-button">Դիտել քարտեզի վրա</a>
+                    </div>
+                    <div class="location-card" id="hall">
+                        <h3>Հարսանյաց սրահ</h3>
+                        <span>Ժամը՝ 17:00</span>
+                        <a href="https://maps.app.goo.gl/etiARB859VTiJqTT9" target="_blank" class="map-button">Դիտել քարտեզի վրա</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="end_section" class="section">
+            <div class="section-content">
+                <h2 class="heartbeat-text">Սիրով սպասում ենք Ձեզ 💖</h2>
+                <!-- Share Button -->
+                <button id="share-button" class="share-button">💌 Կիսվել հրավիրատոմսով</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle" class="music-toggle-button" aria-label="Երաժշտությունը միացնել/անջատել">🎵</button>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">Loading...</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
