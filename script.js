@@ -58,18 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
     const bgLayer1 = document.getElementById('bg-layer-1');
     const bgLayer2 = document.getElementById('bg-layer-2');
-
-    // Image Error Handling
-    function handleImageError(layer, fallbackImage) {
-        console.warn(`Image failed to load. Applying fallback: ${fallbackImage}`);
-        layer.style.backgroundImage = `url(${fallbackImage})`;
-    }
     
-    // You can create a simple fallback.jpg or use one of your existing images
-    const fallbackImg = 'images/gun_image1.jpg'; 
-    bgLayer1.onerror = () => handleImageError(bgLayer1, fallbackImg);
-    bgLayer2.onerror = () => handleImageError(bgLayer2, fallbackImg);
-
     if (sections.length > 0 && bgLayer1 && bgLayer2) {
         
         const sectionImages = {
@@ -121,49 +110,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         initializeBackground();
-        // Throttle scroll events for performance
         window.addEventListener('scroll', throttle(changeImageOnScroll, 200));
     }
 
     // ==================================================================
-    // ======================= BETTER MUSIC CONTROLS ====================
+    // ======================= ԵՐԱԺՇՏՈՒԹՅԱՆ ԿԱՌԱՎԱՐՈՒՄ ===================
     // ==================================================================
     const audioElement = document.getElementById('background-music');
     const musicToggleButton = document.getElementById('music-toggle');
-    let userInteracted = false;
-
-    // Listen for the first interaction to enable audio context
-    document.body.addEventListener('click', () => { userInteracted = true; }, { once: true });
     
-    // Create Volume Slider
-    const volumeSlider = document.createElement('input');
-    volumeSlider.type = 'range';
-    volumeSlider.min = '0';
-    volumeSlider.max = '1';
-    volumeSlider.step = '0.05';
-    volumeSlider.value = '0.5';
-    volumeSlider.className = 'volume-slider'; // For potential styling via CSS
-
     if (audioElement && musicToggleButton) {
+        audioElement.volume = 0.5;
 
-        // Try to play on load
         audioElement.play().then(() => {
             musicToggleButton.textContent = '⏸';
         }).catch(() => {
             musicToggleButton.textContent = '🎵';
         });
 
-        // Toggle music and volume slider
         musicToggleButton.addEventListener('click', () => {
             if (audioElement.paused) {
-                audioElement.play().then(() => {
-                    musicToggleButton.textContent = '⏸';
-                    volumeSlider.style.display = 'block';
-                });
+                audioElement.play();
+                musicToggleButton.textContent = '⏸';
             } else {
                 audioElement.pause();
                 musicToggleButton.textContent = '🎵';
-                volumeSlider.style.display = 'none';
             }
         });
     }
@@ -171,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================================
     // ========= "ԲԱՑԱՀԱՅՏՈՒՄ ՍՔՐՈԼ ԱՆԵԼԻՍ" ՏՐԱՄԱԲԱՆՈՒԹՅՈՒՆ ======
     // ==================================================================
-    const revealElements = document.querySelectorAll('h1:not(.name), h2, p, .location-card, .calendar, #countdown, .share-button');
+    const revealElements = document.querySelectorAll('h1:not(.name), h2, p, .location-card, .calendar, #countdown');
     revealElements.forEach(el => el.classList.add('reveal-on-scroll'));
 
     const observer = new IntersectionObserver((entries) => {
@@ -182,12 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.remove('is-visible');
             }
         });
-    }, { threshold: 0.3 }); // Adjust threshold for when animation should trigger
+    }, { threshold: 0.3 });
 
     revealElements.forEach(el => observer.observe(el));
 
     // ==================================================================
-    // ======================= JS OPTIMIZATION (THROTTLE) =============
+    // ======================= THROTTLE FUNCTION ========================
     // ==================================================================
     function throttle(func, limit) {
         let inThrottle;

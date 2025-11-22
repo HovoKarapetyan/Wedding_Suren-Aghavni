@@ -10,33 +10,19 @@ body {
 // ==================== LOADING SCREEN =========================
 // ================================================================== */
 #loading-screen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #fdfdfe;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #fdfdfe; display: flex; justify-content: center;
+    align-items: center; z-index: 9999;
     transition: opacity 0.8s ease-out, visibility 0.8s;
-    visibility: visible;
-    opacity: 1;
+    visibility: visible; opacity: 1;
 }
-#loading-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+#loading-screen.hidden { opacity: 0; visibility: hidden; }
 .loader {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5em;
-    color: #bd8989;
-    /* Adding a subtle animation to the loader text */
-    animation: pulse 1.5s infinite ease-in-out;
+    font-family: 'Playfair Display', serif; font-size: 1.5em;
+    color: #bd8989; animation: pulse 1.5s infinite ease-in-out;
 }
 @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; }
 }
 
 /* ==================================================================
@@ -50,7 +36,6 @@ body {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover; background-position: center center;
     background-repeat: no-repeat;
-    /* Enhanced Background Transition */
     transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: slowZoom 30s infinite alternate ease-in-out;
 }
@@ -67,13 +52,11 @@ body {
     font-family: 'Montserrat', sans-serif; font-size: 1.2em;
     font-weight: 300; letter-spacing: 2px;
     color: #fff; text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    animation: pop-in-title 0.8s ease-out 0.3s forwards;
+    opacity: 0; animation: pop-in-title 0.8s ease-out 0.3s forwards;
 }
 .names-container {
     position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+    transform: translate(-50%, -50%); opacity: 0;
     animation: pop-in-names 1s ease-out 0.6s forwards;
 }
 .ampersand {
@@ -106,9 +89,12 @@ body {
 }
 .section-content { max-width: 900px; width: 100%; text-align: center; }
 h1, h2 { font-family: 'Playfair Display', serif; font-size: 3.5em; font-weight: 700; margin-bottom: 25px; }
-#countdown-section, #story-section, #timeline-section, .section:last-child { color: white; }
-#countdown-section h1, #story-section h2, #timeline-section h2, .section:last-child h2, .calendar { text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.9); }
+#countdown-section, #story-section, #timeline-section, #end_section { color: white; }
+#countdown-section h1, #story-section h2, #timeline-section h2, #end_section h2, .calendar { text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.9); }
 h2::after { content: ''; display: block; margin: 20px auto 0; width: 80px; height: 1px; background-color: rgba(255, 255, 255, 0.5); }
+/* Հեռացնում ենք գիծը բաբախող տեքստի տակից */
+.heartbeat-text::after { display: none; }
+
 p { font-size: 1.3em; line-height: 1.8; font-weight: 300; text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.9); }
 
 /* ==================================================================
@@ -163,28 +149,13 @@ p { font-size: 1.3em; line-height: 1.8; font-weight: 300; text-shadow: 0px 2px 6
 }
 .map-button:hover { background-color: #ffffff; color: #202525; transform: scale(1.05); }
 
-.share-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 28px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 50px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.3);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-.share-button:hover { background-color: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
-
 .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform; }
 .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-.heartbeat-text { animation: heartbeat 1.2s infinite ease-in-out; }
+.heartbeat-text { animation: heartbeat 1.5s infinite ease-in-out; }
 @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
 .music-toggle-button {
-    position: fixed; bottom: 50px; right: 20px; z-index: 1000;
+    position: fixed; bottom: 20px; right: 20px; z-index: 1000;
     background-color: rgba(189, 137, 137, 0.9); color: white;
     border: none; border-radius: 50%; width: 50px; height: 50px;
     font-size: 1.2em; display: flex; justify-content: center;
@@ -205,19 +176,15 @@ p { font-size: 1.3em; line-height: 1.8; font-weight: 300; text-shadow: 0px 2px 6
     .calendar { width: 220px; }
     .calendar-day { font-size: 4.5em; }
     .map-button { padding: 8px 15px; font-size: 0.8em; }
-
-    /* Fix Countdown Layout on Mobile */
     .countdown-item { flex-direction: column; align-items: center; gap: 5px; }
     .countdown-number { min-width: auto; text-align: center; font-size: 3em; }
     .countdown-label { font-size: 1em; }
 
-    /* Timeline lines for mobile */
     #groom-house::after { width: 100%; height: 35%; top: 70%; left: 100%; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 90px; }
     #bride-house::after { width: 85%; height: 55%; top: 70%; right: 100%; border-top-width: 4px; border-left-width: 4px; border-top-left-radius: 90px; }
     #church::after { width: 80%; height: 55%; top: 70%; left: 100%; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 90px; }
 }
 
-/* Better Mobile Optimization for very small screens */
 @media (max-width: 480px) {
     .name { font-size: 2.2em; }
     .ampersand { font-size: 8em; }
