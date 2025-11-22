@@ -143,20 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     volumeSlider.step = '0.05';
     volumeSlider.value = '0.5';
     volumeSlider.className = 'volume-slider'; // For potential styling via CSS
-    // Applying styles directly for simplicity
-    Object.assign(volumeSlider.style, {
-        position: 'fixed',
-        bottom: '80px',
-        right: '5px',
-        zIndex: '1001',
-        display: 'none',
-        width: '80px',
-        accentColor: '#bd8989' // Style the slider color
-    });
-    document.body.appendChild(volumeSlider);
 
     if (audioElement && musicToggleButton) {
-        audioElement.volume = 0.5;
 
         // Try to play on load
         audioElement.play().then(() => {
@@ -178,34 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 volumeSlider.style.display = 'none';
             }
         });
-
-        // Adjust volume
-        volumeSlider.addEventListener('input', (e) => {
-            audioElement.volume = e.target.value;
-        });
-    }
-
-    // ==================================================================
-    // ======================= SHARE FUNCTIONALITY ======================
-    // ==================================================================
-    const shareButton = document.getElementById('share-button');
-    if (shareButton) {
-        shareButton.addEventListener('click', shareWedding);
-    }
-
-    function shareWedding() {
-        if (navigator.share) {
-            navigator.share({
-                title: 'Սուրեն & Աղավնի - Հարսանեկան Հրավիրատոմս',
-                text: 'Սիրով հրավիրում ենք ձեզ ներկա գտնվելու մեր հարսանեկան արարողությանը!',
-                url: window.location.href
-            }).then(() => {
-                console.log('Thanks for sharing!');
-            }).catch(console.error);
-        } else {
-            // Fallback for browsers that don't support Web Share API
-            alert('Կիսվելու հնարավորությունը չի աջակցվում այս բրաուզերի կողմից։');
-        }
     }
 
     // ==================================================================
